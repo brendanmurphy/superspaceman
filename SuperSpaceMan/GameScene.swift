@@ -78,10 +78,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        let nodeB = contact.bodyB.node!
-        if nodeB.name == "POWER_UP_ORB" {
+        
+        if let nodeB = contact.bodyB.node {
             nodeB.removeFromParent()
         }
+        
     }
     
     
