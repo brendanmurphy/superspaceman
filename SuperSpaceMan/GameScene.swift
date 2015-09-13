@@ -67,7 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // collisions
         orbNode!.physicsBody!.categoryBitMask = CollisionCategoryPowerUpOrbs
         orbNode!.physicsBody!.collisionBitMask = 0
-       
+        orbNode!.name = "POWER_UP_ORB"
+        
         addChild(orbNode!)
         
     }
@@ -77,7 +78,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        print("there has been contact: \(contact)")
+        let nodeB = contact.bodyB.node!
+        if nodeB.name == "POWER_UP_ORB" {
+            nodeB.removeFromParent()
+        }
     }
     
     
